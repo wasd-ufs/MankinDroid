@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4734771326069870386, guid: 22ccc9cc8d88ad84e91810126d28d844, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7813370776450635139, guid: 22ccc9cc8d88ad84e91810126d28d844, type: 3}
       propertyPath: m_Name
       value: PickablePlatform
