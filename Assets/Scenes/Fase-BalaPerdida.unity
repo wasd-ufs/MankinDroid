@@ -415,21 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hurtbox
   _trigger: {fileID: 777728379}
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1611526300}
-        m_TargetAssemblyTypeName: PlayerInteractor, Assembly-CSharp
-        m_MethodName: PrintHello
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _events: []
 --- !u!1 &1008242636
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9ad17bca7e17d4c80cd4419cc3b9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  playerSpeed: 4
+  horizontalSpeed: 4
+  jumpForce: 150
+  _jumpState: 1
+  _inputMap: Droid
+  _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!50 &1611526296
 Rigidbody2D:
   serializedVersion: 5
@@ -901,7 +891,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 0
 --- !u!61 &1611526297
 BoxCollider2D:
   m_ObjectHideFlags: 0

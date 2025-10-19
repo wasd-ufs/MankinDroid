@@ -3,66 +3,86 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
+public enum JumpState
+{
+    Floating,
+    Grounded
+}
+
 public class PlayerController : MonoBehaviour
 {   
     
-    [SerializeField] private float playerMaximumMoveSpeed = 4;
-    [SerializeField] private float jumpForce = 5;
-    private Rigidbody2D _playerRigidBody;
-    private bool _playerRightSide = false;
-    public Vector2 _playerDirection;
-
-    [SerializeField] private string _inputMap; //Droid ou Player
+    [SerializeField] private float horizontalSpeed = 4;
     
-    [SerializeField] private InputActionAsset _inputAction;
+    [SerializeField] private float jumpForce = 5;
+    [ReadOnly] [SerializeField] private JumpState _jumpState = JumpState.Grounded;
+    private Rigidbody2D _rigidbody;
+    
+    
+    private bool _rightSide = false;
+    private Vector2 _playerDirection;
+    
+    [Header("Droid or Human")]
+    [SerializeField] private string _inputMap; //Droid ou Human
+    
+    [Header("InputSystem_Actions")]
+    [SerializeField] private InputActionAsset _inputActionAsset;
     private InputAction _moveInput;
     private InputAction _jumpInput;
     
     private void OnEnable()
     {
-        _inputAction.FindActionMap(_inputMap).Enable();
+        _inputActionAsset.FindActionMap(_inputMap).Enable();
     }
     
     private void OnDisable()
     {
-        _inputAction.FindActionMap(_inputMap).Disable();
+        _inputActionAsset.FindActionMap(_inputMap).Disable();
     }
     
     private void Awake()
     {
-        _playerRigidBody = GetComponent<Rigidbody2D>();
-        _moveInput = _inputAction.FindAction(_inputMap+"/Move");
-        _jumpInput = _inputAction.FindAction(_inputMap+"/Jump");
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _moveInput = _inputActionAsset.FindAction(_inputMap+"/Move");
+        _jumpInput = _inputActionAsset.FindAction(_inputMap+"/Jump");
     }
     
 
     void Update()
     {
         _playerDirection = _moveInput.ReadValue<Vector2>();
-
-        if (_jumpInput.WasPressedThisFrame())
+        
+        if (_jumpInput.WasPressedThisFrame() && _jumpState == JumpState.Grounded)
             Jump();
     }
 
     private void FixedUpdate()
     {
-        _playerRigidBody.linearVelocity = new Vector2(
-            _playerDirection.x * playerMaximumMoveSpeed, 
-            _playerRigidBody.linearVelocity.y
+        _rigidbody.linearVelocity = new Vector2(
+            _playerDirection.x * horizontalSpeed, 
+            _rigidbody.linearVelocity.y
             );
 
-        if (_playerDirection.x > 0 && !_playerRightSide || _playerDirection.x < 0 && _playerRightSide) 
+        if (_playerDirection.x > 0 && !_rightSide || _playerDirection.x < 0 && _rightSide) 
             TurnPlayer();
     }
-
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            _jumpState = JumpState.Grounded;
+        }
+    }
+    
     private void TurnPlayer()
     {
-        _playerRightSide = !_playerRightSide;
+        _rightSide = !_rightSide;
         transform.Rotate(0f, 180f, 0f);
     }
 
     private void Jump()
-    {
-        _playerRigidBody.linearVelocity = new Vector2(_playerDirection.x, _playerRigidBody.linearVelocity.y * jumpForce);
+    {   
+        _jumpState = JumpState.Floating;    
+        _rigidbody.AddForce(new Vector2(0f, jumpForce));
     }
 }
