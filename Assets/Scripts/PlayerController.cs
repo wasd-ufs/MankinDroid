@@ -4,35 +4,55 @@ using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
-{
+{   
+    
     [SerializeField] private float playerMaximumMoveSpeed = 4;
     [SerializeField] private float jumpForce = 5;
     private Rigidbody2D _playerRigidBody;
     private bool _playerRightSide = false;
     public Vector2 _playerDirection;
+
+    [SerializeField] private string _inputMap; //Droid ou Player
     
-    [SerializeField] private InputActionReference moveReference;
-    [SerializeField] private InputActionReference interactReference;
-    [SerializeField] private InputActionReference jumpReference;
-        
+    [SerializeField] private InputActionAsset _inputAction;
+    private InputAction _moveInput;
+    private InputAction _jumpInput;
+    
+    private void OnEnable()
+    {
+        _inputAction.FindActionMap(_inputMap).Enable();
+    }
+    
+    private void OnDisable()
+    {
+        _inputAction.FindActionMap(_inputMap).Disable();
+    }
+    
     private void Awake()
     {
-        _playerRigidBody = GetComponent<Rigidbody2D>(); ;
-        interactReference.action.performed += Interact;
-        jumpReference.action.performed += Jump;
+        _playerRigidBody = GetComponent<Rigidbody2D>();
+        _moveInput = _inputAction.FindAction(_inputMap+"/Move");
+        _jumpInput = _inputAction.FindAction(_inputMap+"/Jump");
     }
     
 
     void Update()
     {
-        _playerDirection = moveReference.action.ReadValue<Vector2>();
+        _playerDirection = _moveInput.ReadValue<Vector2>();
+
+        if (_jumpInput.WasPressedThisFrame())
+            Jump();
     }
 
     private void FixedUpdate()
     {
-        _playerRigidBody.linearVelocity = new Vector2(_playerDirection.x * playerMaximumMoveSpeed, _playerRigidBody.linearVelocity.y);
+        _playerRigidBody.linearVelocity = new Vector2(
+            _playerDirection.x * playerMaximumMoveSpeed, 
+            _playerRigidBody.linearVelocity.y
+            );
 
-        if (_playerDirection.x > 0 && !_playerRightSide || _playerDirection.x < 0 && _playerRightSide) TurnPlayer();
+        if (_playerDirection.x > 0 && !_playerRightSide || _playerDirection.x < 0 && _playerRightSide) 
+            TurnPlayer();
     }
 
     private void TurnPlayer()
@@ -41,13 +61,8 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    private void Jump(InputAction.CallbackContext obj)
+    private void Jump()
     {
         _playerRigidBody.linearVelocity = new Vector2(_playerDirection.x, _playerRigidBody.linearVelocity.y * jumpForce);
-    }
-
-    private void Interact(InputAction.CallbackContext obj)
-    {
-        Debug.Log("Interact");
     }
 }

@@ -403,7 +403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 600657039}
   - component: {fileID: 600657038}
-  - component: {fileID: 600657037}
   - component: {fileID: 600657036}
   - component: {fileID: 600657041}
   - component: {fileID: 600657040}
@@ -429,39 +428,8 @@ MonoBehaviour:
   playerMaximumMoveSpeed: 5
   jumpForce: 5
   _playerDirection: {x: 0, y: 0}
-  moveReference: {fileID: -2988386525084934497, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  interactReference: {fileID: -3035939924058678366, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  jumpReference: {fileID: 6564060876244170262, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
---- !u!114 &600657037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600657035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Droid
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  _inputMap: Droid
+  _inputAction: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!50 &600657038
 Rigidbody2D:
   serializedVersion: 5
@@ -498,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 600657035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.54, y: -0.98, z: 0}
+  m_LocalPosition: {x: -1.58, y: -1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,7 +893,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1303847546}
   - component: {fileID: 1303847545}
-  - component: {fileID: 1303847544}
   - component: {fileID: 1303847543}
   - component: {fileID: 1303847542}
   - component: {fileID: 1303847541}
@@ -1055,39 +1022,8 @@ MonoBehaviour:
   playerMaximumMoveSpeed: 5
   jumpForce: 5
   _playerDirection: {x: 0, y: 0}
-  moveReference: {fileID: -5682392778778087488, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  interactReference: {fileID: -1847138706711617184, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  jumpReference: {fileID: 720686564371986552, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
---- !u!114 &1303847544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303847540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Human
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  _inputMap: Player
+  _inputAction: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!50 &1303847545
 Rigidbody2D:
   serializedVersion: 5
@@ -1148,7 +1084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1514699454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,9 +1100,8 @@ MonoBehaviour:
   playerMaximumMoveSpeed: 4
   jumpForce: 0
   _playerDirection: {x: 0, y: 0}
-  moveReference: {fileID: -5682392778778087488, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  interactReference: {fileID: -1847138706711617184, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
-  jumpReference: {fileID: 720686564371986552, guid: 589eae32a8289fabb83e1b557cd55006, type: 3}
+  _inputMap: 
+  _inputAction: {fileID: 0}
 --- !u!114 &1514699455
 MonoBehaviour:
   m_ObjectHideFlags: 0
