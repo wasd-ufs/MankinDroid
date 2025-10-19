@@ -10,19 +10,24 @@ public class PlayerInteractor : MonoBehaviour
     [ReadOnly] [SerializeField] private InputAction _interactAction;
     [SerializeField] private float _searchRadius;
     
+    private string _inputMap; //Droid ou Human
+    
+    
     void Awake()
     {
-        _interactAction = _inputAction.FindAction("Interact");
+        var controller = GetComponent<PlayerController>();
+        _inputMap = controller.GetInputMapName();
+        _interactAction = _inputAction.FindAction(_inputMap+"/Interact");
     }
     
     private void OnEnable()
     {
-        _inputAction.FindActionMap("Player").Enable();
+        _inputAction.FindActionMap(_inputMap).Enable();
     }
     
     private void OnDisable()
     {
-        _inputAction.FindActionMap("Player").Disable();
+        _inputAction.FindActionMap(_inputMap).Disable();
     }
     
     private void Update()

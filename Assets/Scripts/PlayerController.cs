@@ -85,4 +85,6 @@ public class PlayerController : MonoBehaviour
         _jumpState = JumpState.Floating;    
         _rigidbody.AddForce(new Vector2(0f, jumpForce));
     }
+
+    public string GetInputMapName() => _inputMap;
 }

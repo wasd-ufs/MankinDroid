@@ -47,7 +47,6 @@ public class DropLocal : MonoBehaviour
     private IEnumerator MoveToPositionSmoothly(Transform objectTransform)
     {   
         var targetPosition = _localPosition;
-        //Vector3 targetPosition = transform.TransformPoint(_localPosition); // Converte _localPosition para posição global
         while (Vector3.Distance(objectTransform.position, targetPosition) > 0.01f)
         {
             objectTransform.position = Vector3.MoveTowards(

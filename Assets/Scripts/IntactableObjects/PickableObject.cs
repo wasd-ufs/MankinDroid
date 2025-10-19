@@ -11,6 +11,12 @@ public enum PickableState
     Fixed
 }
 
+public enum AbleToGrab
+{
+    Droid,
+    Human
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 public class PickableObject : MonoBehaviour, IInteractable
@@ -18,7 +24,8 @@ public class PickableObject : MonoBehaviour, IInteractable
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private Transform _target;
-    
+
+    [SerializeField] private AbleToGrab _whoCanInteract;
     [ReadOnly] [SerializeField] private PickableState _state = PickableState.Dropped;
     
     [Header("Configurações de Atração de Objetos")]
@@ -54,7 +61,7 @@ public class PickableObject : MonoBehaviour, IInteractable
 
     void Grab()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag(_whoCanInteract == AbleToGrab.Droid ? "Droid" : "Human");
         _target = player.GetComponent<Transform>();
         _state = PickableState.Grabbed;
         _rigidbody.simulated = false;

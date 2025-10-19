@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 376456258163462600}
   - component: {fileID: 651552720275370080}
   - component: {fileID: 8215684638313821759}
-  m_Layer: 0
+  - component: {fileID: 1647295556952859884}
+  m_Layer: 6
   m_Name: Droid
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2287705645492855031}
   serializedVersion: 2
-  m_LocalRotation: {x: -1.8708354e-14, y: 0.00000034969113, z: 0.000000053498816, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.28660884, y: -2.405001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &376456258163462600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,11 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9ad17bca7e17d4c80cd4419cc3b9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  playerMaximumMoveSpeed: 5
-  jumpForce: 5
-  _playerDirection: {x: 0, y: 0}
+  horizontalSpeed: 4
+  jumpForce: 250
+  _jumpState: 1
   _inputMap: Droid
-  _inputAction: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!61 &651552720275370080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,7 +174,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 90935317e7a39054ba7973050523163c, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -183,3 +184,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1647295556952859884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287705645492855031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ea3908f79a4f54093a878b5e15fbe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  _inputAction: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _interactAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f3706418-c143-487e-836f-2fa0566f1df2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  _searchRadius: 4
