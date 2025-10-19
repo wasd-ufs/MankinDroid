@@ -14,7 +14,7 @@ public enum JumpState
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [HideInInspector] public bool isHoldingSomething = false;
     [SerializeField] private float horizontalSpeed = 4;
     
     [SerializeField] private float jumpForce = 5;
