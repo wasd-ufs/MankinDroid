@@ -11,7 +11,7 @@ public class Desk : MonoBehaviour
 	[SerializeField] private int _nextScene;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Human"))
         {
             StartCoroutine(EsperaExecuta(0.8f, () => SceneManager.LoadScene(_nextScene)));
             EventSystem.current.SetSelectedGameObject(null);

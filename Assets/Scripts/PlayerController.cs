@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 public enum JumpState
 {
@@ -101,11 +103,31 @@ public class PlayerController : MonoBehaviour
     public string GetInputMapName() => _inputMap;
 
     private void ChangeAnimation(string animationName, float crossfade = 0.2f)
-    {   
+    {
         if (_currentAnimation == animationName)
             return;
-        
+
         _currentAnimation = animationName;
-        _animator.CrossFade(animationName,crossfade);
+        _animator.CrossFade(animationName, crossfade);
+    }
+    
+        public void Die()
+    {
+        // Desativa os controles de input
+        _inputActionAsset.FindActionMap(_inputMap).Disable();
+
+        _rigidbody.linearVelocity = Vector2.zero;
+        _rigidbody.isKinematic = true;
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(2f); 
+
+        // Reinicia a cena atual
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }
