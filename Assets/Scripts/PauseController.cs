@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 public class PauseController : MonoBehaviour
 {
+    [SerializeField] private Animator _animatorTelaConfiguracoes;
     private bool isPaused = false;
     public GameObject pauseMenu;
 
@@ -37,7 +38,7 @@ public class PauseController : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        IniciaAnimacaoTransicaoCena.IniciarTransicao("Start", 0);
     }
     public void Resume()
     {
