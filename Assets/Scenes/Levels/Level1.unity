@@ -2129,6 +2129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickablePlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7828310825290321564, guid: 21bd2f5ecef21254ba18eed752aae44f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
