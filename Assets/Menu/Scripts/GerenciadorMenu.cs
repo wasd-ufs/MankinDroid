@@ -28,6 +28,8 @@ public class GerenciadorMenu : MonoBehaviour
      */
     public void QuitGame()
     {
+        Debug.Log("Fechar o programa!");
 		Application.Quit();   
+        
     }
 }
