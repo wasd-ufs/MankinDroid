@@ -54,5 +54,10 @@ public class PlayerInteractor : MonoBehaviour
         
         return nearestObject;
     }
+
+    public void PrintHello()
+    {
+        Debug.Log("Hello");
+    }
     
 }

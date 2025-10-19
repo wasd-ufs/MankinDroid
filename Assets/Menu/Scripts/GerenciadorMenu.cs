@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GerenciadorMenu : MonoBehaviour
 {
+    [SerializeField] private Animator _animatorTelaConfiguracoes;
     
     /*
      * Responsavel por iniciar o jogo
@@ -12,11 +13,15 @@ public class GerenciadorMenu : MonoBehaviour
         IniciaAnimacaoTransicaoCena.IniciarTransicao("Start", numeroCena);
     }
 
-    public void Configuracoes()
+    public void TelaConfiguracoes()
     {
-        //Chama a tela de configuracoes do jogo
+        _animatorTelaConfiguracoes.Play("AbrirTelaConfiguracao",-1);
     }
-    
+
+    public void SairTelaConfiguracoes()
+    {
+        _animatorTelaConfiguracoes.Play("FecharTelaConfiguracao",-1);
+    }
     
     /*
      * Responsavel por sair do jogo

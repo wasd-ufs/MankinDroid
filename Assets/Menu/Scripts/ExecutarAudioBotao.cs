@@ -2,21 +2,13 @@ using UnityEngine;
 
 public class ExecutarAudioBotao : MonoBehaviour
 {
-  [SerializeField] private AudioSource _audioSource;
-  [SerializeField] private AudioClip _audioClipPress;
-  [SerializeField] private AudioClip _audioClipHight;
-
-  void Start()
-  {
-	  _audioSource = GetComponent<AudioSource>();
-  }
-  
+  [SerializeField] private SettingBaseAudio _settingAudioPress;
+  [SerializeField] private SettingBaseAudio _settingAudioHight;
   public void PlayAudioBtnHight()
   {
-    if (_audioClipPress != null)
+    if (_settingAudioHight != null)
     {
-      _audioSource.clip = _audioClipPress;
-      _audioSource.Play();
+      AudioManager.instance.PlayAudio(_settingAudioHight.Clip,_settingAudioHight.Volume,_settingAudioHight.Pitch);
       return;
     }
     
@@ -25,10 +17,9 @@ public class ExecutarAudioBotao : MonoBehaviour
 
   public void PlayAudioBtnPress()
   {
-    if (_audioClipHight != null)
+    if (_settingAudioPress != null)
     {
-      _audioSource.clip = _audioClipHight; 
-      _audioSource.Play();
+      AudioManager.instance.PlayAudio(_settingAudioPress.Clip,_settingAudioPress.Volume,_settingAudioPress.Pitch);
       return;
     }
     
