@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 
@@ -21,6 +23,9 @@ public enum AbleToGrab
 [RequireComponent(typeof(Collider2D))]
 public class PickableObject : MonoBehaviour, IInteractable
 {   
+    [HideInInspector] public UnityEvent grabbedObject;
+    [HideInInspector] public UnityEvent droppedObject;
+    
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private Transform _target;
@@ -65,12 +70,15 @@ public class PickableObject : MonoBehaviour, IInteractable
         _target = player.GetComponent<Transform>();
         _state = PickableState.Grabbed;
         _rigidbody.simulated = false;
+        grabbedObject.Invoke();
+        
     }
 
     void Drop()
     {   
         _rigidbody.simulated = true;
         _state = PickableState.Dropped;
+        droppedObject.Invoke();
     }
 
     void Vibrate() =>
