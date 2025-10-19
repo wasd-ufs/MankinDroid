@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -10,7 +11,7 @@ public enum JumpState
 }
 
 public class PlayerController : MonoBehaviour
-{   
+{
     
     [SerializeField] private float horizontalSpeed = 4;
     
