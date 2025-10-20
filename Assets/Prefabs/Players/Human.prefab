@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9ad17bca7e17d4c80cd4419cc3b9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  isHoldingSomething: 0
   horizontalSpeed: 4
   jumpForce: 275
   _jumpState: 1
@@ -208,7 +209,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 90935317e7a39054ba7973050523163c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -265,7 +266,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 1, y: 3.01}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 2
 --- !u!50 &47596767160490425
 Rigidbody2D:
   serializedVersion: 5
