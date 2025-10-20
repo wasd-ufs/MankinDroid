@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -25,6 +26,8 @@ public class PickableObject : MonoBehaviour, IInteractable
 {   
     [HideInInspector] public UnityEvent grabbedObject;
     [HideInInspector] public UnityEvent droppedObject;
+    public List<UnityEvent> eventoMilharal;
+
     
     private Transform _transform;
     private Rigidbody2D _rigidbody;
@@ -128,5 +131,9 @@ public class PickableObject : MonoBehaviour, IInteractable
     {
         _state = PickableState.Fixed;
         _rigidbody.simulated = false;
+        for (int i = 0; i < eventoMilharal.Count; i++)
+        {
+            eventoMilharal[i]?.Invoke();
+        }
     }
 }
