@@ -13,14 +13,7 @@ public class Desk : MonoBehaviour
     {
         if (other.CompareTag("Human"))
         {
-            StartCoroutine(EsperaExecuta(0.8f, () => SceneManager.LoadScene(_nextScene)));
-            EventSystem.current.SetSelectedGameObject(null);
+	        IniciaAnimacaoTransicaoCena.IniciarTransicao("Start", _nextScene);
         }
     }
-
-    private IEnumerator EsperaExecuta(float time,System.Action action)
-	{
-		yield return new WaitForSeconds(time);
-		action ?.Invoke();
-	}
 }

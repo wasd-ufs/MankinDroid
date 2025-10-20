@@ -14,7 +14,7 @@ public enum JumpState
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [HideInInspector] public bool isHoldingSomething = false;
     [SerializeField] private float horizontalSpeed = 4;
     
     [SerializeField] private float jumpForce = 5;
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     
     private Animator _animator;
     private string _currentAnimation = "";
+    private string _posfix;
     
     private void OnEnable()
     {
@@ -52,11 +53,12 @@ public class PlayerController : MonoBehaviour
         _moveInput = _inputActionAsset.FindAction(_inputMap+"/Move");
         _jumpInput = _inputActionAsset.FindAction(_inputMap+"/Jump");
         _animator = GetComponent<Animator>();
+        _posfix = this.gameObject.tag;
     }
 
     void Start()
     {
-        ChangeAnimation("idle_boy");
+        ChangeAnimation("idle_"+_posfix);
     }
 
     void Update()
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
             );
         
         if (_jumpState == JumpState.Grounded)
-            ChangeAnimation(Mathf.Abs(_rigidbody.linearVelocity.x) > 0 ? "walking_boy" : "idle_boy");
+            ChangeAnimation(Mathf.Abs(_rigidbody.linearVelocity.x) > 0 ? "walking_"+_posfix : "idle_"+_posfix);
 
         if (_jumpInput.WasPressedThisFrame() && _jumpState == JumpState.Grounded)
             Jump();
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             _jumpState = JumpState.Grounded;
-            ChangeAnimation("idle_boy");
+            ChangeAnimation("idle_"+_posfix);
         }
     }
     
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {   
         _jumpState = JumpState.Floating;
-        ChangeAnimation("jumping_boy");
+        ChangeAnimation("jumping_"+_posfix);
         _rigidbody.AddForce(new Vector2(0f, jumpForce));
     }
 
