@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Menu.unity
     guid: c797b5fdb525c0946b183dd0186e4fca
   - enabled: 1
-    path: Assets/Scenes/Video1.unity
+    path: Assets/Scenes/Scenes_De_Desenvolvimento/Video1.unity
     guid: 97cd94fee8c9c5d469ae5898fb2a2ebc
   - enabled: 1
     path: Assets/Scenes/Levels/Level1.unity
