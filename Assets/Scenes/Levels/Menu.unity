@@ -1240,7 +1240,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4594841289817634900}
-  - {fileID: 4641764595601303866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &735476778
@@ -3543,7 +3542,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 695157938}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 628931942899437876, guid: 41e5520a76978c04b86a77bb5892a352, type: 3}
       propertyPath: _sceneAudioDataList.Array.size
@@ -3614,11 +3613,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e5520a76978c04b86a77bb5892a352, type: 3}
---- !u!4 &4641764595601303866 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7918117173115712569, guid: 41e5520a76978c04b86a77bb5892a352, type: 3}
-  m_PrefabInstance: {fileID: 4641764595601303865}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3629,3 +3623,4 @@ SceneRoots:
   - {fileID: 122666499}
   - {fileID: 1948801353}
   - {fileID: 695157938}
+  - {fileID: 4641764595601303865}
